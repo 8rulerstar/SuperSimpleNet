@@ -65,13 +65,13 @@ class SSNDataset(Dataset):
 
         self.vflip = A.VerticalFlip(p=1.0)
         self.hflip = A.HorizontalFlip(p=1.0)
-        self.rotate = A.Rotate(limit=(180, 180), p=1.0)
+        self.rotate = A.Rotate(limit=(180, 180), border_mode=cv2.BORDER_REFLECT_101, p=1.0)
 
         self.random_normal_rotate = A.Compose(
             [
                 A.VerticalFlip(p=0.3),
                 A.HorizontalFlip(p=0.3),
-                A.Rotate(limit=90, p=0.3),
+                A.Rotate(limit=90, border_mode=cv2.BORDER_REFLECT_101, p=0.3),
             ]
         )
 
